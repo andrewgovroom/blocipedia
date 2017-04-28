@@ -21,7 +21,7 @@ source 'https://rubygems.org'
  gem 'bootstrap'
  gem 'bootstrap-sass'
  # gem 'sprockets-rails', '>= 2.0.0'
- gem 'figaro'
+ gem 'figaro', '1.0'
  gem 'devise'
 
  group :development, :test do
