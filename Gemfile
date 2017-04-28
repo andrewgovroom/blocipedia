@@ -20,7 +20,7 @@ source 'https://rubygems.org'
  gem 'turbolinks'
  gem 'bootstrap'
  gem 'bootstrap-sass'
- gem 'sprockets-rails', '>= 2.0.0'
+ # gem 'sprockets-rails', '>= 2.0.0'
  gem 'figaro'
  gem 'devise'
 
