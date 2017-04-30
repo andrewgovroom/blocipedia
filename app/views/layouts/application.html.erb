@@ -14,7 +14,7 @@
        <li><%= link_to "Blocipedia", root_path %></li>
        <li> <%= link_to "Wikis", wikis_path %> </li>
        <li><%= link_to "About", about_path %></li>
-    </ul>   
+      
        <div class="pull-right user-info">
         <% if user_signed_in? %>
            Signed in as: <strong><%= current_user.email %></strong> |
@@ -24,7 +24,7 @@
            <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
          <% end %>
         </div>
-      
+     </ul>  
       
        <% if flash[:notice] %>
            <div class="alert alert-success">

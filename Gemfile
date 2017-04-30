@@ -18,11 +18,11 @@ source 'https://rubygems.org'
  gem 'coffee-rails', '~> 4.1.0'
  gem 'jquery-rails'
  gem 'turbolinks'
- gem 'bootstrap'
+ # gem 'bootstrap'
  gem 'bootstrap-sass'
- # gem 'sprockets-rails', '>= 2.0.0'
  gem 'figaro', '1.0'
  gem 'devise'
+ gem 'pundit'
 
  group :development, :test do
    gem 'byebug'
