@@ -23,7 +23,7 @@ class WikisController < ApplicationController
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
      authorize @wiki
-
+     
  
      if @wiki.save
 
@@ -65,7 +65,7 @@ class WikisController < ApplicationController
 
      if @wiki.destroy
        flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-       redirect_to wiki_path
+       redirect_to wiki_user
      else
        flash.now[:alert] = "There was an error deleting the Wiki."
        render :show

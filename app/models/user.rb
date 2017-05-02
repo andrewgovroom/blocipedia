@@ -8,6 +8,31 @@ class User < ActiveRecord::Base
   
    before_save { self.role ||= :standard }
    
+   
+      def standard?
+        role == 'standard'
+      end
+    
+      def premium?
+        role == 'premium'
+      end
+    
+      def admin?
+        role == 'admin'
+      end
+    
+      def downgrade_account
+        self.update_attribute(:role, 'standard')
+      end
+      
+
+   
+   
+   
+   
+   
+   
+   
    enum role: [:standard, :premium, :admin]
          
          

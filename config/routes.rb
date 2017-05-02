@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'charges/create'
+
   # get 'wikis/index'
 
   # get 'wikis/show'
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   
-  resources :users, :wikis
+  resources :users
+  resources :wikis
+  resources :charges, only: [:new, :create]
    
 end

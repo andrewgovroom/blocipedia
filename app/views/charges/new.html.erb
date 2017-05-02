@@ -1,0 +1,31 @@
+<br>
+<br>
+<div class = 'teal box centered-text shift-down move-to-center'> Select your account plan.
+  <% if !current_user %>
+    <%= button_to "Sign Up", new_user_registration_path, :class => "green-btn centered-text", 
+    :method => :get %>
+  <% end %>
+</div>
+
+
+
+ <% if current_user && current_user.premium? %>
+
+   <%= form_for current_user do |f| %>
+      <%= f.submit "Select Free", data: { confirm: "Downgrade account to free status?" }, 
+      class: "btn-danger centered-text" %>
+      <%= f.hidden_field :role, :value => 'standard'%>
+    <% end %>
+
+ <% end %>
+
+<br>
+
+
+
+
+
+ <%= form_tag charges_path do %>
+   <h4>Sign up for an Premium Account!</h4>
+   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+ <% end %>
