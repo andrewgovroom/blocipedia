@@ -5,8 +5,8 @@
 
    Wiki.create!(
  
-     title:  Faker::Company.name,
-     body:   Faker::Company.catch_phrase,
+     title:  Faker::StarWars.character,
+     body:   Faker::StarWars.wookie_sentence,
      # private: Faker::Boolean.boolean
    )
  end

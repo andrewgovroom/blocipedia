@@ -1,8 +1,8 @@
 <br>
 <br>
-<div class = 'teal box centered-text shift-down move-to-center'> Select your account plan.
+<div> Select your account plan.
   <% if !current_user %>
-    <%= button_to "Sign Up", new_user_registration_path, :class => "green-btn centered-text", 
+    <%= button_to "Sign Up", new_user_registration_path, :class => "btn-primary centered-text", 
     :method => :get %>
   <% end %>
 </div>
@@ -12,7 +12,7 @@
  <% if current_user && current_user.premium? %>
 
    <%= form_for current_user do |f| %>
-      <%= f.submit "Select Free", data: { confirm: "Downgrade account to free status?" }, 
+      <%= f.submit "Select Free", data: { confirm: "Downgrade to Free Account?" }, 
       class: "btn-danger centered-text" %>
       <%= f.hidden_field :role, :value => 'standard'%>
     <% end %>
