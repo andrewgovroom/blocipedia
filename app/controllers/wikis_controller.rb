@@ -3,12 +3,16 @@ class WikisController < ApplicationController
   
   
   def index
-    @wiki = Wiki.all
+   
+    
+    @wiki = Wiki.visible_to(current_user)
+    authorize @wiki
     
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    
   end
 
   def new
@@ -19,22 +23,32 @@ class WikisController < ApplicationController
   
   def create
 
-     @wiki = Wiki.new
-     @wiki.title = params[:wiki][:title]
-     @wiki.body = params[:wiki][:body]
+     
+    #   @wiki = Wiki.new
+
+    #   @wiki.title = params[:wiki][:title]
+    #   @wiki.body = params[:wiki][:body]
+   
+    #  @wiki.user = current_user
+    @wiki = current_user.wikis.create(wiki_params)
+    
+  
      authorize @wiki
      
  
      if @wiki.save
 
-       flash[:notice] = "Wiki was saved."
-       redirect_to @wiki
+      flash[:notice] = "Wiki was saved."
+      redirect_to @wiki
      else
  
-       flash.now[:alert] = "There was an error saving the Wiki. Please try again."
-       render :new
+      flash.now[:alert] = "There was an error saving the Wiki. Please try again."
+      render :new
      end
   end
+  
+ 
+  
   
   def edit
      @wiki = Wiki.find(params[:id])
@@ -42,20 +56,20 @@ class WikisController < ApplicationController
   end
   
   
-   def update
+  def update
      @wiki = Wiki.find(params[:id])
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
      authorize @wiki
  
      if @wiki.save
-       flash[:notice] = "Wiki was updated."
-       redirect_to @wiki
+      flash[:notice] = "Wiki was updated."
+      redirect_to @wiki
      else
-       flash.now[:alert] = "There was an error saving the Wiki. Please try again."
-       render :edit
+      flash.now[:alert] = "There was an error saving the Wiki. Please try again."
+      render :edit
      end
-   end
+  end
   
   
   def destroy
@@ -64,13 +78,20 @@ class WikisController < ApplicationController
  
 
      if @wiki.destroy
-       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
-       redirect_to wiki_user
+      flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
+      redirect_to wiki_user
      else
-       flash.now[:alert] = "There was an error deleting the Wiki."
-       render :show
+      flash.now[:alert] = "There was an error deleting the Wiki."
+      render :show
      end
   end
   
+  private
+
+  def wiki_params
+    params.require(:wiki).permit(:title, :body)
+  end
+  
+ 
   
 end

@@ -1,5 +1,9 @@
 <h1>Wikis Posts</h1>
-
+<div class="col-md-4">
+       <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
+     </div>
+     <br>
+     <br>
 <% @wiki.each do |wiki| %>
     <div class="media">
      <div class="media-body">
@@ -10,8 +14,6 @@
            <%= wiki.body %>
        </small>
      </div>
-     <div class="col-md-4">
-       <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
-     </div>
    </div>
+
 <% end %>

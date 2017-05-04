@@ -7,7 +7,7 @@
  
      title:  Faker::StarWars.character,
      body:   Faker::StarWars.wookie_sentence,
-     # private: Faker::Boolean.boolean
+     private: false #public by default
    )
  end
  wikis = Wiki.all

@@ -15,7 +15,7 @@ class ChargesController < ApplicationController
        # Where the real magic happens
          charge = Stripe::Charge.create(
          customer: customer.id, # Note -- this is NOT the user_id in your app
-         amount: 10_00,
+         amount: 15_00,
          description: "Blocipedia Premium Account - #{current_user.email}",
          currency: 'usd'
        )
@@ -37,11 +37,13 @@ class ChargesController < ApplicationController
      @stripe_btn_data = {
      key: "#{ Rails.configuration.stripe[:publishable_key] }",
      description: "Blocipedia Premium Account - #{current_user.email}",
-     amount: 10_00
+     amount: 15_00
      }
 
    end
  
+  
+  private
     
     def make_premium
      current_user.update_attribute(:role, 'premium')
