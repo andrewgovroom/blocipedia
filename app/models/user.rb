@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :wikis
+  has_many :collaborators
+  has_many :wikis, through: :collaborators
   
    before_save { self.role ||= :standard }
    
@@ -21,17 +23,12 @@ class User < ActiveRecord::Base
         role == 'admin'
       end
     
+    
       def downgrade_account
         self.update_attribute(:role, 'standard')
       end
       
 
-   
-   
-   
-   
-   
-   
    
    enum role: [:standard, :premium, :admin]
          

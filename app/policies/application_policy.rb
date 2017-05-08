@@ -8,14 +8,17 @@ class ApplicationPolicy
 
   def index?
     true
+    
   end
 
   def show?
-    wiki.private?
+     wiki.private?
+    
   end
 
   def create?
     user.present?
+    
   end
 
   def new?

@@ -8,10 +8,12 @@
     <div class="media">
      <div class="media-body">
        <h4 class="media-heading">
-         <%= link_to wiki.markdown_title, wiki %>
+           <%= link_to markdown(wiki.title), wiki %> <% if wiki.private? %> Private <% end %>
+         
        </h4>
         <small>
-           <%= wiki.body %>
+            <%= markdown(wiki.body) %>
+           <!--<%= wiki.body %>-->
        </small>
      </div>
    </div>
